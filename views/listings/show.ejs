@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show Specific Model</title>
+</head>
+<body>
+  <h1>Details of <%= particularData.id %></h1>
+  <ul>
+    <li><%= particularData.title %></li>
+    <li><%= particularData.description%></li>
+    <li>&#8377 <%= particularData.price.toLocaleString("en-IN") %></li>
+    <li><%= particularData.location %></li>
+    <li><%= particularData.country %></li>
+    
+
+  </ul>
+</body>
+</html>

@@ -5,9 +5,9 @@ const path=require("path");
 const Listing = require("./Models/listing.js");
 const port=8080;
 
-app.set("view engine","ejs")
-app.set("views",path.join(__dirname,"views"))
-
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"views"));
+app.use(express.urlencoded({extended:true}));
 
 // MongoDB connection string: mongodb://<host>:<port>/<databaseName>
 const Mongo_URL="mongodb://127.0.0.1:27017/airbnb";
@@ -41,6 +41,13 @@ app.get("/start",(req,res)=>{
 app.get("/listing",async(req,res)=>{
   const allListings = await Listing.find({});
   res.render("listings/index.ejs",{allListings})
+})
+
+// Shwo Route:
+app.get("/listing/:id",async(req,res)=>{
+  const {id}=req.params;
+  const particularData=await Listing.findById(id);
+  res.render("listings/show.ejs",{particularData})
 })
 
 // ------------------------------------------------------------
