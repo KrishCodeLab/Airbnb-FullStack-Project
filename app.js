@@ -43,6 +43,10 @@ app.get("/listing",async(req,res)=>{
   res.render("listings/index.ejs",{allListings})
 })
 
+//Create a new 
+app.get("/listing/new",(req,res)=>{
+  res.render("listings/new.ejs")
+})
 // Shwo Route:
 app.get("/listing/:id",async(req,res)=>{
   const {id}=req.params;
