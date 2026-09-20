@@ -14,6 +14,9 @@
     <li><%= particularData.location %></li>
     <li><%= particularData.country %></li>
     
+    <form method="GET" action="/listing/<%=particularData.id %>/edit">
+      <button type="submit"> Edit </button>
+    </form>
 
   </ul>
 </body>

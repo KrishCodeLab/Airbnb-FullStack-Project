@@ -47,6 +47,23 @@ app.get("/listing",async(req,res)=>{
 app.get("/listing/new",(req,res)=>{
   res.render("listings/new.ejs")
 })
+
+// Post new list
+app.post("/listing",async(req,res)=>{
+  let {title,description,price,country,location}=req.body;
+  const newListing=new Listing({
+    title,
+    description,
+    price,
+    country,
+    location
+
+});
+    await newListing.save();
+    res.redirect("/listing")
+
+    // res.send("New listing added successfully!");
+})
 // Shwo Route:
 app.get("/listing/:id",async(req,res)=>{
   const {id}=req.params;
