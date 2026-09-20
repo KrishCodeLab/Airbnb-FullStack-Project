@@ -4,10 +4,13 @@ const mongoose=require("mongoose");
 const path=require("path");
 const Listing = require("./Models/listing.js");
 const port=8080;
+const methodOverride=require("method-override")
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));
+
+app.use(methodOverride("_method"));
 
 // MongoDB connection string: mongodb://<host>:<port>/<databaseName>
 const Mongo_URL="mongodb://127.0.0.1:27017/airbnb";
@@ -61,9 +64,32 @@ app.post("/listing",async(req,res)=>{
 });
     await newListing.save();
     res.redirect("/listing")
-
+5
     // res.send("New listing added successfully!");
 })
+
+
+// Edit form Route :
+app.get("/listing/:id/edit",async (req,res)=>{
+  let {id}=req.params;
+  let particularData=await Listing.findById(id);
+  res.render("listings/edit",{particularData});
+})
+
+
+// Updata Data in Database PUT Request for updating data :- 
+app.put("/listing/:id",async(req,res)=>{
+  const newListing=req.body.Listing;
+  let {id}=req.params;
+  
+  const UpdatedListing=await Listing.findByIdAndUpdate(id,newListing)
+  UpdatedListing.save();
+
+  res.redirect("/listing")
+})
+
+
+
 // Shwo Route:
 app.get("/listing/:id",async(req,res)=>{
   const {id}=req.params;
