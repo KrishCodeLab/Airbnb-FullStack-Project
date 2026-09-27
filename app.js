@@ -5,10 +5,14 @@ const path=require("path");
 const Listing = require("./Models/listing.js");
 const port=8080;
 const methodOverride=require("method-override")
+const ejsMate = require("ejs-mate");
+
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));
+app.engine("ejs", ejsMate);
+app.set("layouts",path.join(__dirname,"layouts"))
 
 app.use(methodOverride("_method"));
 
