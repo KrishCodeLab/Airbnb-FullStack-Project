@@ -10,14 +10,23 @@
 <body>
   <h1>All Listing</h1> 
   <br>
-  <form action="/listing/new" method="GET">
-    <button>Create a new </button>
-  </form>
+  <div class="row">
+  <% for (let listing of allListings) { %>
+      <section class="card" style="max-width: 320px">
+  <img src="<%= listing.image %>" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h4 class="card-title"><%= listing.title %></h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+    <a href="#" class="btn-solid theme-primary">Go somewhere</a>
+  </div>
+</section>
+    <% } %>
+  </div>
   <!-- Displaying all titles -->
- <ul>
+ <!-- <ul>
    <% for (let listing of allListings) { %>
     <a href="/listing/<%= listing._id %>"><li><%= listing.title %></li></a>
    <% } %>
- </ul>
+ </ul> -->
 </body>
 <!-- </html> -->
