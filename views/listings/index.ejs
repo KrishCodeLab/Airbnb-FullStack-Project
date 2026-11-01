@@ -1,32 +1,25 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AirBnB</title>
-</head> -->
-
 <% layout("/layouts/boilerplate") %>
-<body>
-  <h1>All Listing</h1> 
-  <br>
-  <div class="row">
-  <% for (let listing of allListings) { %>
-      <section class="card" style="max-width: 320px">
-  <img src="<%= listing.image %>" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h4 class="card-title"><%= listing.title %></h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn-solid theme-primary">Go somewhere</a>
-  </div>
-</section>
-    <% } %>
-  </div>
-  <!-- Displaying all titles -->
- <!-- <ul>
-   <% for (let listing of allListings) { %>
-    <a href="/listing/<%= listing._id %>"><li><%= listing.title %></li></a>
-   <% } %>
- </ul> -->
-</body>
-<!-- </html> -->
+
+  <body>
+    <h1>All Listing</h1>
+    <br>
+
+    <!-- Card  -->
+    <div class="row">
+      <% for (let listing of allListings) { %>
+        <div class="card" style="width: 18rem;">
+          <img src="<%= listing.image %>" class="card-img-top" alt="listing image">
+          <div class="card-body">
+            <p class="card-text">
+            <p>
+              <%= listing.title %>
+            </p>
+            <p>
+              <%= listing.price.toLocaleString("en-IN") %>
+            </p>
+            </p>
+          </div>
+        </div>
+        <% } %>
+    </div>
+  </body>
