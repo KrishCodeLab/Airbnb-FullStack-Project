@@ -2,8 +2,60 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family:Arial, Helvetica, sans-serif;
 }
-.custom-navbar{
-  height: 3rem;
-  border-bottom: 2px;
+/* Navbar Styeling */
+.fa-compass{
+  color:red;
+  font-size: 2rem;
+}
+.navbar{
+  background-color: white;
+  height:5rem;
+  border-bottom: 4px solid red;
+}
+.nav-link{
+  color:black !important;
+}
+
+
+/* Footer  */
+.f-info{
+  height: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ebebeb;
+  align-items: center; 
+  justify-content:space-evenly;
+  
+  
+}
+.f-socials , .f-links , .f-industry-name{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* border: 2px solid black; */
+} 
+.f-info .f-socials i{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+.f-industry-name{
+  font-size: 1.5rem;
+  font-weight: bold;
+  
+}
+.f-links a{
+  text-decoration: none;
+  color:black;
+  margin-right: 1rem;
+
+
+}
+.f-links a:hover{
+  text-decoration: underline;
+  
 }
