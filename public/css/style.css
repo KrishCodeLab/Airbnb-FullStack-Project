@@ -9,6 +9,7 @@
   color:red;
   font-size: 2rem;
 }
+
 .navbar{
   background-color: white;
   height:5rem;
@@ -88,4 +89,15 @@
 
 .listing-link{
   text-decoration: none;
+}
+
+/* new btn */
+.new-btn{
+  background-color: #fe424d !important;
+  border: none !important;
+}
+/* edit btn */
+.edit-btn{
+  background-color: #fe424d !important;
+  border:none !important;
 }
