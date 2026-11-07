@@ -1,29 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create a new list</title>
-</head>
-<body>
-  <h1>Create a Listing</h1>
-  <form action="/listing" method="POST">
-    <input type="text" placeholder="Enter titile" name="title">
-    <br>
-    <br>
-    <input type="text" placeholder="Enter Description" name="description">
-    <br>
-    <br>
-    <input type="text" placeholder="Enter price " name="price">
-    <br>
-    <br>
-    <input type="text" placeholder="Enter location" name="location">
-    <br>
-    <br>
-    <input type="text" placeholder="Enter Country" name="country">
-    <br>
-    <br>
-    <button type="submit">Add</button>
-  </form>
-</body>
-</html>
+<% layout("/layouts/boilerplate") %>
+
+
+  <body>
+    <div class="row">
+      <h1>Create a Listing</h1>
+
+      <form action="/listing" method="POST">
+        <!-- Title -->
+        <div class="mb-3">
+          <label for="title" class="form-lable">Title</label>
+          <input type="text" placeholder="" name="title" class="form-control">
+
+        </div>
+
+
+        <!-- Description -->
+
+        <div class="mb-3">
+          <label for="description" class="form-lable">Description</label>
+          <input type="text" placeholder="Enter Description" name="description" class="form-control">
+
+        </div>
+
+
+        <!--Price  -->
+
+        <div class="mb-3">
+          <label for="price" class="form-lable">Price</label>
+          <input type="text" placeholder="Enter price " name="price" class="form-control">
+        </div>
+
+
+        <!-- location -->
+
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input type="text" placeholder="Enter location" name="location" class="form-control">
+        </div>
+
+
+        <!-- Countru -->
+        <div class="mb-3">
+          <label for="country" class="form-label">Country</label>
+          <input type="text" placeholder="Enter Country" name="country" class="form-control">
+        </div>
+
+        <!-- Submit button -->
+        <div class="mb-3">
+          <button type="submit" class="btn btn-danger">Add</button>
+
+        </div>
+      </form>
+    </div>
+
+  </body>
