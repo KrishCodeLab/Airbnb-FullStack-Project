@@ -93,6 +93,11 @@ app.put("/listing/:id",async(req,res)=>{
   res.redirect("/listing")
 })
 
+// Delete Data in Database Using DELETE Request 
+app.delete("/listing/:id",async(req,res)=>{
+  const {id}=req.params;
+})
+
 
 
 // Shwo Route:
@@ -101,6 +106,8 @@ app.get("/listing/:id",async(req,res)=>{
   const particularData=await Listing.findById(id);
   res.render("listings/show.ejs",{particularData})
 })
+
+app.get("/")
 
 // ------------------------------------------------------------
 // TEST ROUTE - ONLY needed once, to confirm mongoose.connect() +

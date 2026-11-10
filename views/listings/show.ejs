@@ -6,19 +6,38 @@
   <title>Show Specific Model</title>
 </head> -->
 <% layout("layouts/boilerplate") %>
-<body>
-  <h1>Details of <%= particularData.id %></h1>
-  <ul>
-    <li><%= particularData.title %></li>
-    <li><%= particularData.description%></li>
-    <li>&#8377 <%= particularData.price.toLocaleString("en-IN") %></li>
-    <li><%= particularData.location %></li>
-    <li><%= particularData.country %></li>
-    
-    <form method="GET" action="/listing/<%=particularData.id%>/edit">
-      <button type="submit"> Edit </button>
-    </form>
 
-  </ul>
-</body>
-<!-- </html> -->
+  <body>
+    <div class="row mt-3">
+      <div class="col-8 offset-2">
+        <h2>Listing Details</h2>
+      </div>
+
+      <div class="card col-6 offset-2">
+        <img src="<%=particularData.image %>" class="card-img-top show-img" alt="Listing_Image">
+        <div class="card-body">
+          <p class="card-text">
+
+            <b>
+              <%= particularData.title %>
+            </b> <br>
+            <%= particularData.description%> <br>
+              &#8377 <%= particularData.price.toLocaleString("en-IN") %> <br>
+                <%= particularData.location %> <br>
+                  <%= particularData.country %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="btns">
+      <a href="/listing/<%=particularData.id%>/edit">
+        <button type="submit" class="edit-btn btn"> Edit </button>
+      </a>
+      <form method="POST" action="/listing/<%=particularData.id%>/__method=DELETE">
+        ><button>Delete</button>
+      </form>
+    </div>
+
+  </body>
+  <!-- </html> -->
