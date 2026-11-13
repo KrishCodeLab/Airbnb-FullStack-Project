@@ -7,43 +7,56 @@
         <h1>Editing <%=particularData.id %>
         </h1>
 
-        <form action="/listing/<%= particularData.id %>?_method=PUT" method="POST">
+        <form action="/listing/<%= particularData.id %>?_method=PUT" method="POST" class="needs-validation" novalidate>
 
           <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" name="Listing[title]" value="<%=particularData.title %>" class="form-control">
-
+            <input type="text" name="Listing[title]" value="<%=particularData.title %>" class="form-control" required>
+            <div class="valid-feedback">Title looks good !</div>
+            <div class="invalid-feedback">Please enter valid title</div>
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Description</label>
 
             <input type="text" name="Listing[description]" value="<%= particularData.description %>"
-              class="form-control">
+              class="form-control" required>
+            <div class="valid-feedback">Discription looks good !</div>
+            <div class="invalid-feedback">Please enter valid discription</div>
 
           </div>
 
           <div class="mb-3">
             <label for="image" class="form-label">Image Link</label>
-            <input type="text" name="Listing[image]" value="<%= particularData.image %>" class="form-control">
+            <input type="text" name="Listing[image]" value="<%= particularData.image %>" class="form-control" required>
+            <div class="valid-feedback">Image link looks good !</div>
+            <div class="invalid-feedback">Please enter valid Image link</div>
           </div>
 
           <div class="mb-3">
             <label for="price" class="form-label">Price</label>
 
-            <input type="number" name="Listing[price]" value="<%= particularData.price %>" class="form-control">
-
+            <input type="number" name="Listing[price]" value="<%= particularData.price %>" class="form-control"
+              required>
+            <div class="valid-feedback">Price looks good !</div>
+            <div class="invalid-feedback">Please enter valid price</div>
           </div>
           <div class="row">
             <div class="mb-3 col-md-6">
               <label for="country" class="form-label">Country</label>
 
-              <input type="text" name="Listing[country]" value="<%= particularData.country %>" class="form-control">
+              <input type="text" name="Listing[country]" value="<%= particularData.country %>" class="form-control"
+                required>
+              <div class="valid-feedback">Country looks good !</div>
+              <div class="invalid-feedback">Please enter valid country</div>
 
             </div>
             <div class="mb-3 col-md-6">
               <label for="location" class="form-label">Location</label>
 
-              <input type="text" name="Listing[location]" value="<%= particularData.location %>" class="form-control">
+              <input type="text" name="Listing[location]" value="<%= particularData.location %>" class="form-control"
+                required>
+              <div class="valid-feedback">Location looks good !</div>
+              <div class="invalid-feedback">Please enter valid location</div>
 
             </div>
           </div>
@@ -57,3 +70,4 @@
       </div>
     </div>
   </body>
+  <script src="/js/script.js"></script>
