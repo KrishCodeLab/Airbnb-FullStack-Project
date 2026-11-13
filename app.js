@@ -98,7 +98,8 @@ app.delete("/listing/:id",async(req,res)=>{
   const {id}=req.params;
   const deleteListing=await Listing.findByIdAndDelete(id)
   console.log(deleteListing+" user deleted from database successfully ")
-  res.send(deleteListing+" successfully deleted")
+  // res.send(deleteListing+" successfully deleted")
+  res.redirect("/listing")
 })
 
 
