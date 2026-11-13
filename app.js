@@ -96,7 +96,9 @@ app.put("/listing/:id",async(req,res)=>{
 // Delete Data in Database Using DELETE Request 
 app.delete("/listing/:id",async(req,res)=>{
   const {id}=req.params;
-  const deleteListinh=await Listing.findByIdAndDelete(id,)
+  const deleteListing=await Listing.findByIdAndDelete(id)
+  console.log(deleteListing+" user deleted from database successfully ")
+  res.send(deleteListing+" successfully deleted")
 })
 
 

@@ -30,12 +30,13 @@
       </div>
     </div>
 
-    <div class="btns">
+    <div class="btns row">
+
       <a href="/listing/<%=particularData.id%>/edit">
-        <button type="submit" class="edit-btn btn"> Edit </button>
+        <button type="submit" class="edit-btn btn col-4"> Edit </button>
       </a>
-      <form method="POST" action="/listing/<%=particularData.id%>/__method=DELETE">
-        ><button>Delete</button>
+      <form method="POST" action="/listing/<%=particularData.id%>?_method=DELETE">
+        <button class="col-4">Delete</button>
       </form>
     </div>
 
