@@ -17,6 +17,8 @@ app.use(express.static(path.join(__dirname,"/public")))
 
 app.use(methodOverride("_method"));
 
+
+
 // MongoDB connection string: mongodb://<host>:<port>/<databaseName>
 const Mongo_URL="mongodb://127.0.0.1:27017/airbnb";
 
@@ -134,7 +136,10 @@ app.get("/")
 //   res.send("Successfully Testing")
 // })
 
-
+// Handel Error : Sending custom response when erro will occur
+app.use((err,req,res,next)=>{
+  res.send("Something Wrong ! ")
+});
 
 // Server Listening message printing
 app.listen(port,()=>{
