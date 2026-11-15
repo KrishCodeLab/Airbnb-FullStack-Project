@@ -7,6 +7,7 @@ const port=8080;
 const methodOverride=require("method-override")
 const ejsMate = require("ejs-mate");
 const wrapAsync=require("./utils/wrapAsync.js")
+const ExpressError=require("./utils/ExpressError.js")
 
 
 app.set("view engine","ejs");
@@ -142,10 +143,21 @@ app.get("/listing/:id",wrapAsync(async(req,res)=>{
 //   console.log("Sample Was Saved ")
 //   res.send("Successfully Testing")
 // })
+// app.all("*",(req,res,next)=>{
+//   res.send("page not found")
+// })
+
+// Responding all routes that not exist.
+app.all("{*splat}",(req,res,next)=>{
+  next(new ExpressError(400,"Page Not Found"))
+});
 
 // Handel Error : Sending custom response when erro will occur
+// middlware for error handeling
 app.use((err,req,res,next)=>{
-  res.send("Something Wrong ! ")
+  let {statuscode,message}=err;
+  res.status(statuscode).send(message)
+  // res.send("Something Wrong ! ")
 });
 
 // Server Listening message printing
