@@ -6,6 +6,7 @@ const Listing = require("./Models/listing.js");
 const port=8080;
 const methodOverride=require("method-override")
 const ejsMate = require("ejs-mate");
+const wrapAsync=require("./utils/wrapAsync.js")
 
 
 app.set("view engine","ejs");
@@ -48,10 +49,12 @@ app.get("/start",(req,res)=>{
 })
 
 // Display all list data
-app.get("/listing",async(req,res)=>{
+app.get("/listing",wrapAsync(async(req,res)=>{
   const allListings = await Listing.find({});
   res.render("listings/index.ejs",{allListings})
+
 })
+)
 
 //Create a new 
 app.get("/listing/new",(req,res)=>{
@@ -59,7 +62,8 @@ app.get("/listing/new",(req,res)=>{
 })
 
 // Post new list
-app.post("/listing",async(req,res)=>{
+app.post("/listing",
+  wrapAsync(async(req,res,next)=>{
   let {title,description,price,country,location}=req.body;
   const newListing=new Listing({
     title,
@@ -71,21 +75,22 @@ app.post("/listing",async(req,res)=>{
 });
     await newListing.save();
     res.redirect("/listing")
-5
+  })
     // res.send("New listing added successfully!");
-})
+);
 
 
 // Edit form Route :
-app.get("/listing/:id/edit",async (req,res)=>{
+app.get("/listing/:id/edit",wrapAsync(async (req,res)=>{
   let {id}=req.params;
   let particularData=await Listing.findById(id);
   res.render("listings/edit",{particularData});
 })
+);
 
 
 // Updata Data in Database PUT Request for updating data :- 
-app.put("/listing/:id",async(req,res)=>{
+app.put("/listing/:id",wrapAsync(async(req,res)=>{
   const newListing=req.body.Listing;
   let {id}=req.params;
   
@@ -94,26 +99,28 @@ app.put("/listing/:id",async(req,res)=>{
 
   res.redirect("/listing")
 })
+);
+
 
 // Delete Data in Database Using DELETE Request 
-app.delete("/listing/:id",async(req,res)=>{
+app.delete("/listing/:id",wrapAsync(async(req,res)=>{
   const {id}=req.params;
   const deleteListing=await Listing.findByIdAndDelete(id)
   console.log(deleteListing+" user deleted from database successfully ")
   // res.send(deleteListing+" successfully deleted")
   res.redirect("/listing")
 })
-
+);
 
 
 // Shwo Route:
-app.get("/listing/:id",async(req,res)=>{
+app.get("/listing/:id",wrapAsync(async(req,res)=>{
   const {id}=req.params;
   const particularData=await Listing.findById(id);
   res.render("listings/show.ejs",{particularData})
 })
-
-app.get("/")
+);
+// app.get("/")
 
 // ------------------------------------------------------------
 // TEST ROUTE - ONLY needed once, to confirm mongoose.connect() +
