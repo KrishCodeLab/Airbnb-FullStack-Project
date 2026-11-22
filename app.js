@@ -156,7 +156,8 @@ app.all("{*splat}",(req,res,next)=>{
 // middlware for error handeling
 app.use((err,req,res,next)=>{
   let {statuscode,message}=err;
-  res.status(statuscode).send(message)
+  // res.status(statuscode).send(message)
+  res.render("listings/error.ejs",{message})
   // res.send("Something Wrong ! ")
 });
 
